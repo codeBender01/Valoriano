@@ -4,13 +4,17 @@
 
 @font-face {
   font-family: "NotoSerif";
-  src: url("../public/fonts/NotoSerifJP[wght].ttf") format("truetype");
+  src: url("/fonts/NotoSerifJP[wght].ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Playfair";
-  src: url("../public/fonts/PlayfairDisplay-VariableFont_wght.ttf")
-    format("truetype");
+  src: url("/fonts/PlayfairDisplay-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("/fonts/Mulish-VariableFont_wght.ttf") format("truetype");
 }
 
 *,

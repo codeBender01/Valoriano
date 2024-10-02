@@ -1,0 +1,5 @@
+.ant-btn:hover:enabled {
+  background-color: white !important;
+  color: #271e23 !important;
+  border: 1px solid #271e23 !important;
+}

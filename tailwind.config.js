@@ -6,15 +6,19 @@ export default {
     fontFamily: {
       main: "Noto Serif",
       play: "Playfair",
+      mulish: "Mulish",
     },
     colors: {
-      beige: "#F8F3E9",
+      beige: "#F4F9F7",
       black: "#000000",
+      secondaryBlack: "#121212",
       grayP: "#6A6A6A",
       borderGray: "#D0D0D0",
       textGray: "#3E3E3E",
       buttonGray: "#626262",
       white: "#fff",
+      brown: "#271E23",
+      borderBlack: "#333333",
     },
     fontSize: {
       xl: "48px",

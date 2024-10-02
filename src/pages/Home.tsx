@@ -1,7 +1,5 @@
 import { FC } from "react";
 
-import Header from "../components/Header";
-
 import ring1 from "../assets/ring1.png";
 import ring2 from "../assets/ring2.png";
 import bracelet from "../assets/bracelet1.png";
@@ -9,8 +7,7 @@ import ring3 from "../assets/ring3.png";
 
 const Home: FC = () => {
   return (
-    <div className="bg-beige w-[100%] min-h-[100vh]">
-      <Header />
+    <>
       <div className="flex w-[92%] max-w-[1440px] z-10 mx-auto gap-[50px] relative">
         <div className="h-[480px] w-[55%]">
           <img src={ring1} alt="" className="w-[100%] h-[100%] object-fit" />
@@ -90,11 +87,11 @@ const Home: FC = () => {
             Add To Cart
           </button>
         </div>
-        <div className="w-[55%] h-[500px]">
+        <div className="w-[55%] h-[550px]">
           <img src={ring3} alt="" className="w-[100%] h-[100%] object-cover" />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
