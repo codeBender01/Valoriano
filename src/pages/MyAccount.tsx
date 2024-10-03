@@ -1,59 +1,87 @@
 import { FC } from "react";
 
-import SignInButton from "../components/SignInButton";
 import { Input, Button, Form } from "antd";
 
-import Google from "../svgs/Google";
-import Apple from "../svgs/Apple";
-
 import "../antd.css";
-
-const bigTextClassname =
-  "font-play text-[30px] text-brown font-semibold uppercase text-center";
 
 const MyAccount: FC = () => {
   const [form] = Form.useForm();
 
   return (
-    <div className="min-h-[100vh] h-auto">
+    <div className="min-h-[100vh] h-auto pt-[100px]">
       <div className="w-[100%] bg-brown flex items-center justify-center text-center text-white uppercase font-semibold text-[30px] h-[204px]">
-        my voloriano <br /> account
+        Welcome back <br />
+        Atamurat
       </div>
-      <div className="flex flex-col items-center gap-[18px] mt-[60px]">
-        <SignInButton icon={<Google />} text="Sign in via Google" />
-        <SignInButton icon={<Apple />} text="Sign in via Apple" />
-      </div>
-      <div className={`${bigTextClassname} my-[30px] `}>or</div>
-      <div className={`${bigTextClassname} `}>
-        continue with your email address
-      </div>
-      <div className="w-[50%] mx-auto mt-[30px] bg-beige">
-        <p className="text-default font-mulish font-medium text-secondaryBlack">
-          Sign in with your email and password or create a profile, if you are
-          new
-        </p>
 
+      <div className="w-[50%] mx-auto mt-[60px] bg-beige">
         <Form
           form={form}
           layout="vertical"
-          className="flex flex-col mt-[12px] gap-[30px]"
+          className="flex flex-col mt-[12px] gap-[12px]"
         >
-          <Form.Item className="mb-0">
+          <Form.Item
+            className="mb-0"
+            label={
+              <div className="font-mulish font-medium text-default text-secondaryBlack">
+                First name
+              </div>
+            }
+          >
             <Input
-              className="h-[56px] text-sm"
+              className="h-[56px] text-sm text-inputTextGray"
               style={{
                 borderRadius: "0",
               }}
-              placeholder="Email"
+              value={"Atamurat"}
             />
           </Form.Item>
-          <Form.Item className="mb-0">
-            <Input.Password
-              className="h-[56px] text-sm"
+          <Form.Item
+            className="mb-0"
+            label={
+              <div className="font-mulish font-medium text-default text-secondaryBlack">
+                Last name
+              </div>
+            }
+          >
+            <Input
+              className="h-[56px] text-sm text-inputTextGray"
               style={{
                 borderRadius: "0",
               }}
-              placeholder="Password"
+              value={"Bayjikow"}
+            />
+          </Form.Item>
+          <Form.Item
+            className="mb-0"
+            label={
+              <div className="font-mulish font-medium text-default text-secondaryBlack">
+                Country/Region
+              </div>
+            }
+          >
+            <Input
+              className="h-[56px] text-sm text-inputTextGray"
+              style={{
+                borderRadius: "0",
+              }}
+              value={"Ashgabat"}
+            />
+          </Form.Item>
+          <Form.Item
+            className="mb-0"
+            label={
+              <div className="font-mulish font-medium text-default text-secondaryBlack">
+                Date of birth
+              </div>
+            }
+          >
+            <Input
+              className="h-[56px] text-sm text-inputTextGray"
+              style={{
+                borderRadius: "0",
+              }}
+              value={"27.12.03"}
             />
           </Form.Item>
           <Form.Item className="mb-0">
@@ -65,12 +93,12 @@ const MyAccount: FC = () => {
               id="account"
               className="bg-brown text-white h-[56px] w-[100%] font-main font-medium text-normal"
             >
-              Continue
+              Save changes
             </Button>
           </Form.Item>
         </Form>
         <div className="text-center my-[30px] bg-beige cursor-pointer hover:opacity-80 hover:underline duration-150">
-          forgot your password?
+          Deactivate Account
         </div>
 
         <div className="w-[100%] h-[1px] bg-[#D2D2D7] mb-[250px]"></div>

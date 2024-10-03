@@ -19,6 +19,7 @@ export default {
       white: "#fff",
       brown: "#271E23",
       borderBlack: "#333333",
+      inputTextGray: "#808080",
     },
     fontSize: {
       xl: "48px",
@@ -29,6 +30,20 @@ export default {
     },
     borderRadius: {
       round: "50%",
+    },
+    animation: {
+      "fade-in": "fadeIn 0.3s linear",
+      "fade-out": "fadeOut 0.3s linear",
+    },
+    keyframes: {
+      fadeIn: {
+        "0%": { opacity: "0" },
+        "100%": { opacity: "1" },
+      },
+      fadeOut: {
+        "0%": { opacity: "1" },
+        "100%": { opacity: "0" },
+      },
     },
   },
   plugins: [],

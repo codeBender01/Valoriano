@@ -1,6 +1,10 @@
 import { FC } from "react";
 
-const Cart: FC = () => {
+interface IconProps {
+  stroke: string;
+}
+
+const Cart: FC<IconProps> = ({ stroke }) => {
   return (
     <svg
       className="cursor-pointer hover:opacity-65 duration-150"
@@ -12,7 +16,7 @@ const Cart: FC = () => {
     >
       <path
         d="M2 2.5H3.74001C4.82001 2.5 5.67 3.43 5.58 4.5L4.75 14.46C4.61 16.09 5.89999 17.49 7.53999 17.49H18.19C19.63 17.49 20.89 16.31 21 14.88L21.54 7.38C21.66 5.72 20.4 4.37 18.73 4.37H5.82001"
-        stroke="#292D32"
+        stroke={stroke}
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -20,7 +24,7 @@ const Cart: FC = () => {
       />
       <path
         d="M16.25 22.5C16.9404 22.5 17.5 21.9404 17.5 21.25C17.5 20.5596 16.9404 20 16.25 20C15.5596 20 15 20.5596 15 21.25C15 21.9404 15.5596 22.5 16.25 22.5Z"
-        stroke="#292D32"
+        stroke={stroke}
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -28,7 +32,7 @@ const Cart: FC = () => {
       />
       <path
         d="M8.25 22.5C8.94036 22.5 9.5 21.9404 9.5 21.25C9.5 20.5596 8.94036 20 8.25 20C7.55964 20 7 20.5596 7 21.25C7 21.9404 7.55964 22.5 8.25 22.5Z"
-        stroke="#292D32"
+        stroke={stroke}
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -36,7 +40,7 @@ const Cart: FC = () => {
       />
       <path
         d="M9 8.5H21"
-        stroke="#292D32"
+        stroke={stroke}
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"

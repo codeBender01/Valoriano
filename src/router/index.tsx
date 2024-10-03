@@ -6,6 +6,7 @@ import MainLayout from "../layouts/Main";
 
 import Home from "../pages/Home";
 
+const SignIn = lazy(() => import("../pages/SignIn"));
 const MyAccount = lazy(() => import("../pages/MyAccount"));
 
 export default function Router() {
@@ -21,6 +22,10 @@ export default function Router() {
         {
           element: <Home />,
           path: "/",
+        },
+        {
+          element: <SignIn />,
+          path: "/sign-in",
         },
         {
           element: <MyAccount />,
