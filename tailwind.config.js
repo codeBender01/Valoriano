@@ -20,6 +20,9 @@ export default {
       brown: "#271E23",
       borderBlack: "#333333",
       inputTextGray: "#808080",
+      gold: "#E1AD00",
+      silver: "#8C8C8C",
+      paleGray: "#CFCFCF",
     },
     fontSize: {
       xl: "48px",

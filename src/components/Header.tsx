@@ -11,14 +11,17 @@ const nav = [
   {
     id: 1,
     name: "Configurator",
+    path: "/configurator",
   },
   {
     id: 2,
     name: "About",
+    path: "/",
   },
   {
     id: 3,
     name: "Contact",
+    path: "/",
   },
 ];
 
@@ -70,12 +73,13 @@ const Header: FC = () => {
             <HeaderMenu open={menuOpen} setOpen={setMenuOpen} />
           </div>
           <h1
-            className="text-md2 font-pla font-bold"
+            className="text-md2 font-play font-bold cursor-pointer"
             style={{
               color: colors.textColor,
             }}
+            onClick={() => navigate("/")}
           >
-            Valoriano
+            Voloriano
           </h1>
         </div>
 
@@ -88,6 +92,7 @@ const Header: FC = () => {
                 style={{
                   color: colors.textColor,
                 }}
+                onClick={() => navigate(n.path)}
               >
                 {n.name}
               </div>

@@ -8,6 +8,8 @@ import Home from "../pages/Home";
 
 const SignIn = lazy(() => import("../pages/SignIn"));
 const MyAccount = lazy(() => import("../pages/MyAccount"));
+const MyOrders = lazy(() => import("../pages/MyOrders"));
+const Configurator = lazy(() => import("../pages/Configurator"));
 
 export default function Router() {
   const routes = useRoutes([
@@ -31,7 +33,19 @@ export default function Router() {
           element: <MyAccount />,
           path: "/my-account",
         },
+        {
+          element: <MyOrders />,
+          path: "/my-orders",
+        },
       ],
+    },
+    {
+      element: (
+        <Suspense fallback={<div>loading</div>}>
+          <Configurator />
+        </Suspense>
+      ),
+      path: "/configurator",
     },
   ]);
 
