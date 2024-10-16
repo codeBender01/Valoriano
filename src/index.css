@@ -17,6 +17,11 @@
   src: url("/fonts/Mulish-VariableFont_wght.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Redhat";
+  src: url("/fonts/RedHatDisplay-VariableFont_wght.ttf") format("truetype");
+}
+
 *,
 body {
   font-family: NotoSerif;

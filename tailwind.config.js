@@ -7,6 +7,7 @@ export default {
       main: "Noto Serif",
       play: "Playfair",
       mulish: "Mulish",
+      red: "Redhat",
     },
     colors: {
       beige: "#F4F9F7",
@@ -23,20 +24,24 @@ export default {
       gold: "#E1AD00",
       silver: "#8C8C8C",
       paleGray: "#CFCFCF",
+      grayHeaderMenu: "#A0A6B2",
     },
     fontSize: {
       xl: "48px",
       lg: "34px",
+      md3: "24px",
       md2: "20px",
+      md: "18px",
       default: "16px",
       sm: "14px",
     },
+    breakpoints: {},
     borderRadius: {
       round: "50%",
     },
     animation: {
-      "fade-in": "fadeIn 0.3s linear",
-      "fade-out": "fadeOut 0.3s linear",
+      "fade-in": "fadeIn 0.3s forwards",
+      "fade-out": "fadeOut 0.3s forwards",
     },
     keyframes: {
       fadeIn: {

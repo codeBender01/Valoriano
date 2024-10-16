@@ -1,7 +1,10 @@
 import { FC, Dispatch, SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowForward, IoMdClose } from "react-icons/io";
+import { GoPerson } from "react-icons/go";
+
+import Cart from "../svgs/Cart";
 
 interface HeaderMenuProps {
   open: boolean;
@@ -27,18 +30,68 @@ const pages = [
   },
 ];
 
+const responsivePages = [
+  {
+    name: "Shop",
+    path: "/shop",
+    isArrow: true,
+  },
+  {
+    name: "Memories",
+    path: "/memories",
+    isArrow: true,
+  },
+  {
+    name: "Make your’s",
+    path: "/make-yours",
+    isArrow: true,
+  },
+  {
+    name: "about us",
+    path: "/about-us",
+  },
+  {
+    name: "Delivery",
+    path: "/delivery",
+  },
+  {
+    name: "Language",
+    path: "/language",
+    isArrow: true,
+  },
+];
+
 const HeaderMenu: FC<HeaderMenuProps> = ({ open, setOpen }) => {
   const navigate = useNavigate();
 
   return (
     <div
-      className={`bg-brown px-[94px] py-[44px] absolute ${
+      className={`bg-brown px-[22px] py-8 md:px-[94px] md:py-[44px] fixed top-0 left-0 w-[100%] h-[100vh] md:absolute md:w-auto md:top-auto md:h-auto ${
         open
           ? "animate-fade-in opacity-100 visible"
-          : "animate-fade-out opacity-0 collapse"
+          : "animate-fade-out opacity-0 invisible"
       }`}
     >
-      <ul className="w-[400px] flex flex-col gap-[20px]">
+      <div className="md:hidden flex items-center justify-between cursor-pointer">
+        <div className="text-md3 text-white" onClick={() => setOpen(false)}>
+          <IoMdClose />
+        </div>
+        <h1
+          className="text-md2 text-white font-play font-bold cursor-pointer block md:hidden"
+          onClick={() => navigate("/")}
+        >
+          Voloriano
+        </h1>
+        <div className="text-white text-md3 flex items-center gap-3">
+          <div>
+            <GoPerson />
+          </div>
+          <div>
+            <Cart stroke="#fff" />
+          </div>
+        </div>
+      </div>
+      <ul className="w-[400px] hidden md:flex flex-col gap-[20px]">
         {pages.map((p) => {
           return (
             <li
@@ -55,6 +108,48 @@ const HeaderMenu: FC<HeaderMenuProps> = ({ open, setOpen }) => {
           );
         })}
       </ul>
+
+      <ul className="w-[100%] mt-[84px] flex md:hidden flex-col gap-[20px]">
+        {responsivePages.map((p) => {
+          return (
+            <li
+              key={p.name}
+              onClick={() => {
+                setOpen(false);
+                navigate(p.path);
+              }}
+              className="flex justify-between items-center uppercase text-white font-semibold font-play text-md cursor-pointer hover:mx-[4px] hover:opacity-80 duration-200 py-[12px]"
+            >
+              {p.name}
+              {p.isArrow && <IoIosArrowForward />}
+            </li>
+          );
+        })}
+      </ul>
+
+      <div className="h-[1px] w-[100%] bg-white mt-[30px] md:hidden"></div>
+
+      <div className="px-[33px] mt-[20px] flex justify-between md:hidden">
+        <ul className="flex flex-col gap-2">
+          <li className="font-red text-sm text-grayHeaderMenu font-normal cursor-pointer hover:opacity-80 duration-150">
+            Contact us
+          </li>
+          <li className="font-red text-sm text-grayHeaderMenu font-normal cursor-pointer hover:opacity-80 duration-150">
+            Where is my order
+          </li>
+          <li className="font-red text-sm text-grayHeaderMenu font-normal cursor-pointer hover:opacity-80 duration-150">
+            YouTube
+          </li>
+        </ul>
+        <ul className="flex flex-col gap-2">
+          <li className="font-red text-sm text-grayHeaderMenu font-normal cursor-pointer hover:opacity-80 duration-150">
+            My account
+          </li>
+          <li className="font-red text-sm text-grayHeaderMenu font-normal cursor-pointer hover:opacity-80 duration-150">
+            Instagram
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

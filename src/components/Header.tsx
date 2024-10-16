@@ -73,7 +73,7 @@ const Header: FC = () => {
             <HeaderMenu open={menuOpen} setOpen={setMenuOpen} />
           </div>
           <h1
-            className="text-md2 font-play font-bold cursor-pointer"
+            className="text-md2 font-play font-bold cursor-pointer hidden md:block"
             style={{
               color: colors.textColor,
             }}
@@ -83,7 +83,17 @@ const Header: FC = () => {
           </h1>
         </div>
 
-        <nav className="flex gap-11 items-center">
+        <h1
+          className="text-md2 font-play font-bold cursor-pointer block md:hidden"
+          style={{
+            color: colors.textColor,
+          }}
+          onClick={() => navigate("/")}
+        >
+          Voloriano
+        </h1>
+
+        <nav className="gap-11 items-center hidden md:flex">
           {nav.map((n) => {
             return (
               <div
@@ -102,7 +112,7 @@ const Header: FC = () => {
         <div className="flex gap-[30px] items-center">
           <div
             onClick={() => navigate("/my-account")}
-            className="font-mulish text-sm flex items-center gap-2 cursor-pointer hover:opacity-85 duration-100"
+            className="font-mulish text-sm items-center gap-2 cursor-pointer hover:opacity-85 duration-100 hidden md:flex"
             style={{
               color: colors.textColor,
             }}
