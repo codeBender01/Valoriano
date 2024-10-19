@@ -48,7 +48,7 @@ const Configurator: FC = () => {
     console.log(steps);
   }, [steps]);
 
-  if (steps.introduction) {
+  if (steps.introduction && state === "mobile") {
     return null;
   }
 
