@@ -12,12 +12,12 @@ const MyOrders: FC = () => {
 
   return (
     <div className="min-h-[100vh] h-auto pt-[100px]">
-      <div className="w-[100%] bg-brown flex items-center justify-center text-center text-white uppercase font-semibold text-[30px] h-[204px]">
+      <div className="w-[100%] bg-brown flex items-center justify-center text-center text-white uppercase font-semibold text-[24px] md:text-[30px] h-[204px]">
         CHECK YOUR <br />
         ORDER
       </div>
 
-      <div className="w-[50%] mx-auto mt-[60px] bg-beige">
+      <div className="w-[90%] md:w-[50%] mx-auto mt-[60px] bg-beige">
         <Form
           form={form}
           layout="vertical"

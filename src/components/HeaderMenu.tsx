@@ -16,6 +16,7 @@ const pages = [
     name: "my account",
     path: "/my-account",
   },
+
   {
     name: "my orders",
     path: "/my-orders",
@@ -43,7 +44,7 @@ const responsivePages = [
   },
   {
     name: "Make your’s",
-    path: "/make-yours",
+    path: "/bracelet-type",
     isArrow: true,
   },
   {
@@ -52,11 +53,11 @@ const responsivePages = [
   },
   {
     name: "Delivery",
-    path: "/delivery",
+    path: "/",
   },
   {
     name: "Language",
-    path: "/language",
+    path: "/",
     isArrow: true,
   },
 ];

@@ -23,7 +23,7 @@ const Home: FC = () => {
           </p>
         </div>
 
-        <div className="lg:bottom-[-5%]  lg:left-[45%] md:left-[75%] left-[64%] rounded-round flex items-center justify-center absolute translate-y-[-50%] bottom-[-45%] text-default text-center border-borderGray border-[1px] font-medium underline text-textGray w-[145px] h-[145px]">
+        <div className="lg:bottom-[-5%] lg:left-[45%] md:left-[75%] left-[60%] rounded-round flex items-center justify-center absolute translate-y-[-50%] bottom-[-45%] text-default text-center border-borderGray border-[1px] font-medium underline text-textGray w-[145px] h-[145px]">
           Explore <br /> Story
         </div>
       </div>

@@ -25,6 +25,15 @@ export default {
       silver: "#8C8C8C",
       paleGray: "#CFCFCF",
       grayHeaderMenu: "#A0A6B2",
+      graySquare: "#E2E4E3",
+      luxuryRed: "#9E0000",
+      blue: "#0031E1",
+      moshGreen: "#174735",
+      oceanBlue: "#00B8E1",
+      grayBand: "#747474",
+      lightGreen: "#00DB89",
+      purple: "#B400E1",
+      black: "#000000",
     },
     fontSize: {
       xl: "48px",
@@ -35,9 +44,15 @@ export default {
       default: "16px",
       sm: "14px",
     },
-    breakpoints: {},
+    screens: {
+      mobile: "550px",
+      md: "768px",
+      tablet: "900px",
+      lg: "1024px",
+    },
     borderRadius: {
       round: "50%",
+      md: "10px",
     },
     animation: {
       "fade-in": "fadeIn 0.3s forwards",

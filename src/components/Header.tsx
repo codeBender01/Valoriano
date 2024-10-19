@@ -16,7 +16,7 @@ const nav = [
   {
     id: 2,
     name: "About",
-    path: "/",
+    path: "/about-us",
   },
   {
     id: 3,
@@ -112,13 +112,15 @@ const Header: FC = () => {
         <div className="flex gap-[30px] items-center">
           <div
             onClick={() => navigate("/my-account")}
-            className="font-mulish text-sm items-center gap-2 cursor-pointer hover:opacity-85 duration-100 hidden md:flex"
+            className="font-mulish text-sm items-center gap-2 cursor-pointer hover:opacity-85 duration-100 flex"
             style={{
               color: colors.textColor,
             }}
           >
             <GoPerson size={24} />
-            My Account
+            <span className="font-mulish text-sm hidden md:inline">
+              My Account
+            </span>
           </div>
           <Cart stroke={colors.iconColor} />
         </div>
