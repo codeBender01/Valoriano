@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import { Button } from "antd";
@@ -43,10 +43,6 @@ const Configurator: FC = () => {
     symbol: "Select symbol",
     bandColor: "Choose band color",
   };
-
-  useEffect(() => {
-    console.log(steps);
-  }, [steps]);
 
   if (steps.introduction && state === "mobile") {
     return null;
@@ -350,6 +346,9 @@ const Configurator: FC = () => {
             });
             setMobileActiveText("bandColor");
             setProgress(4);
+          }
+          if (steps.bandColor) {
+            navigate("/cart");
           }
         }}
       >

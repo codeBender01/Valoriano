@@ -39,7 +39,7 @@ const responsivePages = [
   },
   {
     name: "Memories",
-    path: "/",
+    path: "/memories-start",
     isArrow: true,
   },
   {

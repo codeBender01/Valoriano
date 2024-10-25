@@ -122,7 +122,9 @@ const Header: FC = () => {
               My Account
             </span>
           </div>
-          <Cart stroke={colors.iconColor} />
+          <div onClick={() => navigate("/cart")}>
+            <Cart stroke={colors.iconColor} />
+          </div>
         </div>
       </div>
     </header>

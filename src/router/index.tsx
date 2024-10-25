@@ -14,6 +14,8 @@ const AboutUs = lazy(() => import("../pages/AboutUs"));
 const Shop = lazy(() => import("../pages/Shop"));
 const BraceletType = lazy(() => import("../pages/BraceletType"));
 const Cart = lazy(() => import("../pages/Cart"));
+const Memories = lazy(() => import("../pages/Memories"));
+const MemoriesStartPage = lazy(() => import("../pages/MemoriesStartPage"));
 
 export default function Router() {
   const routes = useRoutes([
@@ -49,6 +51,10 @@ export default function Router() {
           element: <Shop />,
           path: "/shop",
         },
+        {
+          element: <Shop />,
+          path: "/shop",
+        },
       ],
     },
     {
@@ -74,6 +80,22 @@ export default function Router() {
         </Suspense>
       ),
       path: "/cart",
+    },
+    {
+      element: (
+        <Suspense fallback={<div>loading</div>}>
+          <Memories />
+        </Suspense>
+      ),
+      path: "/memories",
+    },
+    {
+      element: (
+        <Suspense fallback={<div>loading</div>}>
+          <MemoriesStartPage />
+        </Suspense>
+      ),
+      path: "/memories-start",
     },
   ]);
 
