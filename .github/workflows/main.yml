@@ -34,9 +34,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Pull latest code
-        run: git pull origin main
-
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -55,5 +52,5 @@ jobs:
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@38.180.204.124 "rm -rf /var/www/dist"
-          scp -i ~/.ssh/id_rsa -r ./dist root@38.180.204.124:/var/www/html
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@38.180.204.124 "rm -rf /var/www/html/dist && mkdir -p /var/www/html/dist"
+          scp -i ~/.ssh/id_rsa -r ./dist/* root@38.180.204.124:/var/www/html/dist
