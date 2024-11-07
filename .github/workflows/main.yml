@@ -24,8 +24,7 @@ jobs:
         run: npm run build
 
       - name: Lint and Test
-        run: |
-          npm run lint
+        run: npm run lint
 
   cd:
     needs: ci
@@ -34,6 +33,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Pull latest code
+        run: git pull origin main
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
