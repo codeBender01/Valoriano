@@ -27,6 +27,7 @@ const nav = [
 
 const Header: FC = () => {
   const navigate = useNavigate();
+  const [userData, setUserData] = useState(null);
 
   const [colors, setColors] = useState({
     bgColor: "transparent",
@@ -54,6 +55,12 @@ const Header: FC = () => {
     });
 
     return () => window.removeEventListener("scroll", () => {});
+  }, []);
+
+  useEffect(() => {
+    const data: any = localStorage.getItem("user");
+    const jsonData = JSON.parse(data);
+    setUserData(jsonData);
   }, []);
 
   return (
@@ -110,18 +117,41 @@ const Header: FC = () => {
           })}
         </nav>
         <div className="flex gap-[30px] items-center">
-          <div
-            onClick={() => navigate("/my-account")}
-            className="font-mulish text-sm items-center gap-2 cursor-pointer hover:opacity-85 duration-100 flex"
-            style={{
-              color: colors.textColor,
-            }}
-          >
-            <GoPerson size={24} />
-            <span className="font-mulish text-sm hidden md:inline">
-              My Account
-            </span>
-          </div>
+          {userData ? (
+            <div
+              onClick={() => navigate("/my-account")}
+              className="font-mulish text-sm items-center gap-2 cursor-pointer hover:opacity-85 duration-100 flex"
+              style={{
+                color: colors.textColor,
+              }}
+            >
+              <GoPerson size={24} />
+              <span className="font-mulish text-sm hidden md:inline">
+                My Account
+              </span>
+            </div>
+          ) : (
+            <div
+              className="flex gap-[15px]"
+              style={{
+                color: colors.textColor,
+              }}
+            >
+              <p
+                className="font-mulish font-normal hover:opacity-65 cursor-pointer"
+                onClick={() => navigate("/sign-in")}
+              >
+                Sign in
+              </p>
+              <p>|</p>
+              <p
+                className="font-mulish font-normal hover:opacity-65 cursor-pointer"
+                onClick={() => navigate("/sign-up")}
+              >
+                Sign up
+              </p>
+            </div>
+          )}
           <div onClick={() => navigate("/cart")}>
             <Cart stroke={colors.iconColor} />
           </div>

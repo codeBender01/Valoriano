@@ -14,6 +14,7 @@ const AboutUs = lazy(() => import("../pages/AboutUs"));
 const Shop = lazy(() => import("../pages/Shop"));
 const BraceletType = lazy(() => import("../pages/BraceletType"));
 const Cart = lazy(() => import("../pages/Cart"));
+const SignUp = lazy(() => import("../pages/SignUp"));
 const Memories = lazy(() => import("../pages/Memories"));
 const MemoriesStartPage = lazy(() => import("../pages/MemoriesStartPage"));
 
@@ -36,6 +37,10 @@ export default function Router() {
           path: "/sign-in",
         },
         {
+          element: <SignUp />,
+          path: "/sign-up",
+        },
+        {
           element: <MyAccount />,
           path: "/my-account",
         },
@@ -46,10 +51,6 @@ export default function Router() {
         {
           element: <AboutUs />,
           path: "/about-us",
-        },
-        {
-          element: <Shop />,
-          path: "/shop",
         },
         {
           element: <Shop />,
@@ -95,7 +96,7 @@ export default function Router() {
           <MemoriesStartPage />
         </Suspense>
       ),
-      path: "/memories-start",
+      path: "/",
     },
   ]);
 
