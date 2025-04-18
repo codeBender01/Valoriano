@@ -23,7 +23,6 @@ import { FaAngleLeft, FaAngleRight, FaArrowDown } from "react-icons/fa6";
 
 import "./memories.css";
 import "../../antd.css";
-import { BiArrowFromLeft } from "react-icons/bi";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
 
 gsap.registerPlugin(ScrollTrigger);

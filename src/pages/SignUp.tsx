@@ -13,7 +13,7 @@ const SignUp: FC = () => {
   const onFinish = (value: React.ChangeEvent<HTMLInputElement>) => {
     publicInstance
       .post("client/auth/registration", value)
-      .then((res) => {
+      .then(() => {
         message.success("Successfully!");
       })
       .catch((err) => {
