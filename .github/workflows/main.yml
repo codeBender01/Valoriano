@@ -1,56 +1,53 @@
-name: CI/CD Pipeline
+name: Deploy Frontend to VPS
 
 on:
   push:
     branches:
-      - main
+      - main  # Trigger on push to main branch
 
 jobs:
-  ci:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run build
-        run: npm run build
-
-      - name: Lint and Test
-        run: npm run lint
-
-  cd:
-    needs: ci
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    # Checkout the code
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
+    # Setup Node.js for Frontend
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '21'  # Matches your specified Node version
 
-      - name: Install dependencies
-        run: npm install
+    # Install Frontend Dependencies
+    - name: Install Dependencies
+      run: npm install  # Removed working-directory, assuming root
 
-      - name: Build project
-        run: npm run build
+    # Build Frontend
+    - name: Build Frontend
+      run: npm run build  # Removed working-directory, assuming root
 
-      - name: Deploy to Server
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@38.180.204.124 "rm -rf /var/www/html/dist && mkdir -p /var/www/html/dist"
-          scp -i ~/.ssh/id_rsa -r ./dist/* root@38.180.204.124:/var/www/html/dist
+    # Deploy to VPS
+    - name: Deploy to VPS
+      env:
+        VPS_HOST: ${{ secrets.VPS_HOST }}
+        VPS_USER: ${{ secrets.VPS_USER }}
+        VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        FRONTEND_PATH: ${{ secrets.APP_PATH }}  # Adjust to your deployment path
+      run: |
+        # Install SSH key
+        echo "$VPS_SSH_KEY" > deploy_key
+        chmod 600 deploy_key
+
+        # Deploy Frontend
+        rsync -avz --delete -e "ssh -i deploy_key -o StrictHostKeyChecking=no" \
+          ./dist/ $VPS_USER@$VPS_HOST:$FRONTEND_PATH  # Adjusted path to ./dist/
+
+        # Restart Nginx on VPS
+        ssh -i deploy_key -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
+          sudo systemctl restart nginx
+        EOF
+
+        # Clean up
+        rm deploy_key
