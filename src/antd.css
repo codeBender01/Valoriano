@@ -9,3 +9,15 @@
   color: white !important;
   border: 1px solid #271e23 !important;
 }
+
+.slick-dots {
+  bottom: 10px !important;
+}
+
+.slick-dots li button:before {
+  font-size: 12px !important;
+}
+
+img {
+  background-color: transparent;
+}

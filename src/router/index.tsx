@@ -15,7 +15,7 @@ const Shop = lazy(() => import("../pages/Shop"));
 const BraceletType = lazy(() => import("../pages/BraceletType"));
 const Cart = lazy(() => import("../pages/Cart"));
 const SignUp = lazy(() => import("../pages/SignUp"));
-const Memories = lazy(() => import("../pages/Memories"));
+const Memories = lazy(() => import("../pages/memories/Page"));
 const MemoriesStartPage = lazy(() => import("../pages/MemoriesStartPage"));
 
 export default function Router() {
@@ -26,11 +26,11 @@ export default function Router() {
           <MainLayout />
         </Suspense>
       ),
-      path: "/",
+      // path: "/",
       children: [
         {
           element: <Home />,
-          path: "/",
+          path: "/home",
         },
         {
           element: <SignIn />,
