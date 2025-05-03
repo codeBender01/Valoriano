@@ -4,63 +4,110 @@ import { lazy, Suspense } from "react";
 
 import MainLayout from "../layouts/Main";
 
-import Home from "../pages/Home";
+import Loading from "../components/Loading";
 
 const SignIn = lazy(() => import("../pages/SignIn"));
 const MyAccount = lazy(() => import("../pages/MyAccount"));
 const MyOrders = lazy(() => import("../pages/MyOrders"));
 const Configurator = lazy(() => import("../pages/Configurator"));
 const AboutUs = lazy(() => import("../pages/AboutUs"));
+const Home = lazy(() => import("../pages/Home"));
 const Shop = lazy(() => import("../pages/Shop"));
 const BraceletType = lazy(() => import("../pages/BraceletType"));
 const Cart = lazy(() => import("../pages/Cart"));
 const SignUp = lazy(() => import("../pages/SignUp"));
 const Memories = lazy(() => import("../pages/memories/Page"));
+const VerifyAccount = lazy(() => import("../pages/Verify"));
 const MemoriesStartPage = lazy(() => import("../pages/MemoriesStartPage"));
+const ForgotPassword = lazy(() => import("../pages/ForgotPassword"));
 
 export default function Router() {
   const routes = useRoutes([
     {
       element: (
-        <Suspense fallback={<div>loading</div>}>
+        <Suspense fallback={<Loading />}>
           <MainLayout />
         </Suspense>
       ),
       // path: "/",
       children: [
         {
-          element: <Home />,
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Home />
+            </Suspense>
+          ),
           path: "/home",
         },
         {
-          element: <SignIn />,
+          element: (
+            <Suspense fallback={<Loading />}>
+              <ForgotPassword />
+            </Suspense>
+          ),
+          path: "/forgotPassword",
+        },
+        {
+          element: (
+            <Suspense fallback={<Loading />}>
+              <SignIn />
+            </Suspense>
+          ),
           path: "/sign-in",
         },
         {
-          element: <SignUp />,
+          element: (
+            <Suspense fallback={<Loading />}>
+              <SignUp />
+            </Suspense>
+          ),
           path: "/sign-up",
         },
         {
-          element: <MyAccount />,
+          element: (
+            <Suspense fallback={<Loading />}>
+              <VerifyAccount />
+            </Suspense>
+          ),
+          path: "/verify",
+        },
+        {
+          element: (
+            <Suspense fallback={<Loading />}>
+              <MyAccount />
+            </Suspense>
+          ),
           path: "/my-account",
         },
         {
-          element: <MyOrders />,
+          element: (
+            <Suspense fallback={<Loading />}>
+              <MyOrders />
+            </Suspense>
+          ),
           path: "/my-orders",
         },
         {
-          element: <AboutUs />,
+          element: (
+            <Suspense fallback={<Loading />}>
+              <AboutUs />
+            </Suspense>
+          ),
           path: "/about-us",
         },
         {
-          element: <Shop />,
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Shop />
+            </Suspense>
+          ),
           path: "/shop",
         },
       ],
     },
     {
       element: (
-        <Suspense fallback={<div>loading</div>}>
+        <Suspense fallback={<Loading />}>
           <Configurator />
         </Suspense>
       ),
@@ -68,7 +115,7 @@ export default function Router() {
     },
     {
       element: (
-        <Suspense fallback={<div>loading</div>}>
+        <Suspense fallback={<Loading />}>
           <BraceletType />
         </Suspense>
       ),
@@ -76,7 +123,7 @@ export default function Router() {
     },
     {
       element: (
-        <Suspense fallback={<div>loading</div>}>
+        <Suspense fallback={<Loading />}>
           <Cart />
         </Suspense>
       ),
@@ -84,7 +131,7 @@ export default function Router() {
     },
     {
       element: (
-        <Suspense fallback={<div>loading</div>}>
+        <Suspense fallback={<Loading />}>
           <Memories />
         </Suspense>
       ),
@@ -92,7 +139,7 @@ export default function Router() {
     },
     {
       element: (
-        <Suspense fallback={<div>loading</div>}>
+        <Suspense fallback={<Loading />}>
           <MemoriesStartPage />
         </Suspense>
       ),

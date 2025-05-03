@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosResponse, AxiosError } from "axios";
 import { getToken } from "../utils/getToken";
 
 const token: string | null = getToken();
-const BASE_URL: string = import.meta.env.VITE_APP_BASE_URL + "api/";
+const BASE_URL: string = import.meta.env.VITE_APP_BASE_URL + "server/api/";
 
 const privateInstance: AxiosInstance = axios.create({
   baseURL: BASE_URL,

@@ -1,18 +1,44 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 
 import SignInButton from "../components/SignInButton";
-import { Input, Button, Form } from "antd";
+import { Input, Button, Form, message } from "antd";
 
 import Google from "../svgs/Google";
 import Apple from "../svgs/Apple";
 
 import "../antd.css";
+import { publicInstance } from "../config/axios";
+import { useNavigate } from "react-router-dom";
 
 const bigTextClassname =
   "font-play text-[30px] text-brown font-semibold uppercase text-center";
 
 const SignIn: FC = () => {
   const [form] = Form.useForm();
+  const [notVerified, setNotVerified] = useState<null | boolean>(null);
+  const navigate = useNavigate();
+
+  const onFinish = (value: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(value);
+    publicInstance
+      .post("client/auth/login", value)
+      .then(() => {
+        message.success("Successfully!");
+      })
+      .catch((err) => {
+        if (err.response.data.message) {
+          if (err.response.data.message == "Client is not verified!") {
+            setNotVerified(true);
+          }
+          return message.error(err.response.data.message);
+        }
+        message.error("Some error has accured. Please, try again!");
+      });
+  };
+
+  const onVerifyClick = () => {
+    navigate("/verify");
+  };
 
   return (
     <div className="min-h-[100vh] h-auto pt-[100px]">
@@ -37,8 +63,18 @@ const SignIn: FC = () => {
           form={form}
           layout="vertical"
           className="flex flex-col mt-[12px] gap-[30px]"
+          onFinish={onFinish}
         >
-          <Form.Item className="mb-0">
+          <Form.Item className="mb-0" name="phoneNumber">
+            <Input
+              className="h-[56px] text-sm"
+              style={{
+                borderRadius: "0",
+              }}
+              placeholder="Phone Number"
+            />
+          </Form.Item>
+          <Form.Item className="mb-0" name="email">
             <Input
               className="h-[56px] text-sm"
               style={{
@@ -47,7 +83,7 @@ const SignIn: FC = () => {
               placeholder="Email"
             />
           </Form.Item>
-          <Form.Item className="mb-0">
+          <Form.Item className="mb-0" name="password">
             <Input.Password
               className="h-[56px] text-sm"
               style={{
@@ -58,7 +94,7 @@ const SignIn: FC = () => {
           </Form.Item>
           <Form.Item className="mb-0">
             <Button
-              // type="submit"
+              htmlType="submit"
               style={{
                 borderRadius: "0",
               }}
@@ -69,7 +105,15 @@ const SignIn: FC = () => {
             </Button>
           </Form.Item>
         </Form>
-        <div className="text-center my-[30px] bg-beige cursor-pointer hover:opacity-80 hover:underline duration-150">
+        {notVerified && (
+          <div className="text-center mt-[15px] mb-[-10px] bg-beige cursor-pointer hover:opacity-80 hover:underline duration-150 text-luxuryRed">
+            Verify your account
+          </div>
+        )}
+        <div
+          className="text-center my-[30px] bg-beige cursor-pointer hover:opacity-80 hover:underline duration-150"
+          onClick={onVerifyClick}
+        >
           forgot your password?
         </div>
 
