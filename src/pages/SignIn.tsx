@@ -37,7 +37,7 @@ const SignIn: FC = () => {
   };
 
   const onVerifyClick = () => {
-    navigate("/verify");
+    navigate("/forgotPassword");
   };
 
   return (
