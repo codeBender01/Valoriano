@@ -20,6 +20,7 @@ const Memories = lazy(() => import("../pages/memories/Page"));
 const VerifyAccount = lazy(() => import("../pages/Verify"));
 const MemoriesStartPage = lazy(() => import("../pages/MemoriesStartPage"));
 const ForgotPassword = lazy(() => import("../pages/ForgotPassword"));
+const OrderedDetail = lazy(() => import("../pages/OrderedDetail"));
 
 export default function Router() {
   const routes = useRoutes([
@@ -38,6 +39,14 @@ export default function Router() {
             </Suspense>
           ),
           path: "/home",
+        },
+        {
+          element: (
+            <Suspense fallback={<Loading />}>
+              <OrderedDetail />
+            </Suspense>
+          ),
+          path: "/ordered-detail",
         },
         {
           element: (

@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import { Button } from "antd";
@@ -36,6 +36,14 @@ const Configurator: FC = () => {
   });
   const [mobileActiveText, setMobileActiveText] = useState<Key>("stone");
   const [progress, setProgress] = useState(1);
+  const [info, setInfo] = useState({
+    introduction: "",
+    stone: "",
+    engraving: "",
+    symbol: "",
+    bandColor: "",
+  });
+  const [engraveText, setEngraveText] = useState("");
 
   const options = {
     stone: "Choose stone",
@@ -47,6 +55,20 @@ const Configurator: FC = () => {
   if (steps.introduction && state === "mobile") {
     return null;
   }
+
+  const [products, setProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const data: any = localStorage.getItem("product-info");
+    const jsonData = JSON.parse(data);
+    jsonData !== null && setProducts(jsonData);
+  }, []);
+
+  useEffect(() => {
+    const data: any = localStorage.getItem("user-token");
+    const jsonData = JSON.parse(data);
+    jsonData == null && navigate("/sign-in");
+  }, []);
 
   return (
     <div className="w-[100%] h-[100vh] max-h-[100vh] flex flex-col items-center justify-center mobile:justify-start mobile:pt-[88px] relative">
@@ -100,6 +122,25 @@ const Configurator: FC = () => {
         }`}
         onClick={() => {
           if (steps.bandColor) {
+            // products &&
+            //   products.forEach((element) => {
+            //     if (element.options == info) {
+            //       element.count++;
+            //     }
+            //   });
+
+            localStorage.setItem(
+              "product-info",
+              JSON.stringify([
+                ...products,
+                {
+                  id: Math.floor(Math.random() * (1000000 - 1 + 1)) + 1,
+                  name: "Love Brocelet №1",
+                  price: Math.floor(Math.random() * (200 - 50 + 1)) + 50,
+                  options: info,
+                },
+              ])
+            );
             navigate("/cart");
           }
           if (steps.stone) {
@@ -164,6 +205,7 @@ const Configurator: FC = () => {
                 stone: true,
                 introduction: false,
               });
+              setInfo({ ...info, introduction: "Single" });
             }}
             className="font-normal text-black text-md2 cursor-pointer hover:opacity-60 duration-200"
           >
@@ -177,6 +219,7 @@ const Configurator: FC = () => {
                 stone: true,
                 introduction: false,
               });
+              setInfo({ ...info, introduction: "Couple" });
             }}
             className="font-normal text-black text-md2 cursor-pointer hover:opacity-60 duration-200"
           >
@@ -200,6 +243,7 @@ const Configurator: FC = () => {
                 setSteps({ ...steps, stone: false, engraving: true });
                 setMobileActiveText("engraving");
                 setProgress(2);
+                setInfo({ ...info, stone: "Gold" });
               }}
               className="h-[24px] w-[24px] border-[4px] border-paleGray bg-gold rounded-round hover:h-[28px] hover:w-[28px] duration-200"
             ></div>
@@ -211,6 +255,7 @@ const Configurator: FC = () => {
                 setSteps({ ...steps, stone: false, engraving: true });
                 setMobileActiveText("engraving");
                 setProgress(2);
+                setInfo({ ...info, stone: "Silver" });
               }}
               className="h-[24px] w-[24px] border-[4px] border-paleGray bg-silver rounded-round hover:h-[28px] hover:w-[28px] duration-200"
             ></div>
@@ -230,6 +275,20 @@ const Configurator: FC = () => {
           type="text"
           className="border-b-[1px] border-[#828282] outline-none text-center font-mulish w-[320px] py-[6px]"
           placeholder="Engrave text"
+          onChange={(e) => setEngraveText(e.target.value)}
+          onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
+            if (event.key === "Enter") {
+              setSteps({
+                ...steps,
+                stone: false,
+                engraving: false,
+                symbol: true,
+              });
+              setMobileActiveText("symbol");
+              setProgress(3);
+              setInfo({ ...info, engraving: engraveText });
+            }
+          }}
         />
       </div>
 
@@ -242,7 +301,7 @@ const Configurator: FC = () => {
           Select symbol
         </div>
         <div className="hidden items-center flex-wrap gap-6 justify-center mobile:flex">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((el) => {
+          {["Gold", "Silver", "Brown"].map((el) => {
             return (
               <div
                 key={el}
@@ -255,16 +314,19 @@ const Configurator: FC = () => {
                   });
                   setMobileActiveText("bandColor");
                   setProgress(4);
+                  setInfo({ ...info, symbol: el });
                 }}
               >
-                <div className="h-[24px] w-[24px] border-[4px] border-paleGray bg-gold rounded-round hover:h-[28px] hover:w-[28px] duration-200"></div>
-                <div className="font-normal text-sm text-black">Gold</div>
+                <div
+                  className={`h-[24px] w-[24px] border-[4px] border-paleGray bg-${el.toLocaleLowerCase()} rounded-round hover:h-[28px] hover:w-[28px] duration-200`}
+                ></div>
+                <div className="font-normal text-sm text-black">{el}</div>
               </div>
             );
           })}
         </div>
         <div className="flex items-center flex-wrap gap-6 justify-center mobile:hidden">
-          {[1, 2, 3, 4].map((el) => {
+          {["Gold", "Silver", "Brown"].map((el) => {
             return (
               <div
                 key={el}
@@ -279,8 +341,10 @@ const Configurator: FC = () => {
                   setProgress(4);
                 }}
               >
-                <div className="h-[24px] w-[24px] border-[4px] border-paleGray bg-gold rounded-round hover:h-[28px] hover:w-[28px] duration-200"></div>
-                <div className="font-normal text-sm text-black">Gold</div>
+                <div
+                  className={`h-[24px] w-[24px] border-[4px] border-paleGray bg-${el.toLocaleLowerCase()} rounded-round hover:h-[28px] hover:w-[28px] duration-200`}
+                ></div>
+                <div className="font-normal text-sm text-black">{el}</div>
               </div>
             );
           })}
@@ -300,12 +364,17 @@ const Configurator: FC = () => {
               <div
                 key={el}
                 className="flex flex-col items-center cursor-pointer w-[15%]"
+                onClick={() => {
+                  setInfo({ ...info, bandColor: el });
+                }}
               >
                 <div
                   style={{
                     backgroundColor: el,
                   }}
-                  className={`h-[24px] w-[24px] border-[4px] border-paleGray rounded-round hover:h-[28px] hover:w-[28px] duration-200`}
+                  className={`h-[24px] w-[24px] border-[4px] border-paleGray rounded-round hover:scale-125 duration-200 ${
+                    info.bandColor == el && "scale-125"
+                  }`}
                 ></div>
               </div>
             );
@@ -348,6 +417,7 @@ const Configurator: FC = () => {
             setProgress(4);
           }
           if (steps.bandColor) {
+            localStorage.setItem("product-info", JSON.stringify(info));
             navigate("/cart");
           }
         }}

@@ -58,7 +58,7 @@ const Header: FC = () => {
   }, []);
 
   useEffect(() => {
-    const data: any = localStorage.getItem("user");
+    const data: any = localStorage.getItem("user-token");
     const jsonData = JSON.parse(data);
     setUserData(jsonData);
   }, []);

@@ -9,6 +9,7 @@ import Apple from "../svgs/Apple";
 import "../antd.css";
 import { publicInstance } from "../config/axios";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const bigTextClassname =
   "font-play text-[30px] text-brown font-semibold uppercase text-center";
@@ -19,11 +20,14 @@ const SignIn: FC = () => {
   const navigate = useNavigate();
 
   const onFinish = (value: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(value);
     publicInstance
       .post("client/auth/login", value)
-      .then(() => {
+      .then((res) => {
+        const decoded: any = jwtDecode(res.data.accessToken);
+        localStorage.setItem("user-decoded", JSON.stringify(decoded));
+        localStorage.setItem("user-token", JSON.stringify(res.data));
         message.success("Successfully!");
+        window.location.href = "/my-account";
       })
       .catch((err) => {
         if (err.response.data.message) {
@@ -106,7 +110,10 @@ const SignIn: FC = () => {
           </Form.Item>
         </Form>
         {notVerified && (
-          <div className="text-center mt-[15px] mb-[-10px] bg-beige cursor-pointer hover:opacity-80 hover:underline duration-150 text-luxuryRed">
+          <div
+            className="text-center mt-[15px] mb-[-10px] bg-beige cursor-pointer hover:opacity-80 hover:underline duration-150 text-luxuryRed"
+            onClick={() => navigate("/verify")}
+          >
             Verify your account
           </div>
         )}

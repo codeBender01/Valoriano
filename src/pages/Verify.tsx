@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 import { Input, Button, Form, message } from "antd";
 
@@ -12,6 +12,19 @@ const VerifyAccount: FC = () => {
   const location = useLocation();
   const [verified, setVerified] = useState<null | boolean>(false);
   const data = location.state || {};
+  const [userInfo, setUserInfo] = useState<any>(null);
+
+  useEffect(() => {
+    const data = localStorage.getItem("user-info");
+    if (data) {
+      try {
+        const jsonData = JSON.parse(data);
+        setUserInfo(jsonData);
+      } catch (error) {
+        console.error("Failed to parse user-info:", error);
+      }
+    }
+  }, []);
 
   const onFinish = (value: React.ChangeEvent<HTMLInputElement>) => {
     console.log(value);
@@ -21,7 +34,7 @@ const VerifyAccount: FC = () => {
       })
       .then(() => {
         message.success("Successfully!");
-        window.location.href = "/home";
+        window.location.href = "/sign-in";
       })
       .catch((err) => {
         if (err.response.data.message) {
@@ -33,7 +46,7 @@ const VerifyAccount: FC = () => {
 
   const handleVerifyLink = () => {
     publicInstance
-      .get(data?.link)
+      .post("client/auth/resend-link", { email: userInfo?.email })
       .then((res) => {
         if (res.status == 200) {
           setVerified(true);
@@ -77,7 +90,7 @@ const VerifyAccount: FC = () => {
             }`}
             onClick={() => handleVerifyLink()}
           >
-            Email verification url
+            {verified ? "Email verified!" : "Email verification url"}
           </div>
 
           <Form.Item className="mb-0">

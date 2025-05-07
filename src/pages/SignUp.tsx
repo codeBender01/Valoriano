@@ -14,6 +14,7 @@ const SignUp: FC = () => {
     publicInstance
       .post("client/auth/registration", value)
       .then((res) => {
+        localStorage.setItem("user-info", JSON.stringify(value));
         navigate("/verify", { state: res.data });
         message.success("Successfully!");
       })
