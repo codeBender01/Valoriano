@@ -1,11 +1,23 @@
-import { FC } from "react";
+import { FC, useEffect, useRef } from "react";
 
 import { Button } from "antd";
 
 import { useNavigate } from "react-router-dom";
+import gsap from "gsap";
 
 const MemoriesStartPage: FC = () => {
   const navigate = useNavigate();
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+
+  useEffect(() => {
+    if (titleRef.current) {
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 3 }
+      );
+    }
+  }, []);
 
   return (
     <div className="relative flex items-center justify-center h-[100vh] w-[100%]">
@@ -17,7 +29,10 @@ const MemoriesStartPage: FC = () => {
         Back
       </div> */}
       <div className="w-[70%] max-w-[300px] sm:max-w-[350px] flex flex-col items-center gap-4">
-        <h1 className="font-main font-bold text-[30px] tablet:text-[35px] text-black">
+        <h1
+          className="font-main font-bold text-[30px] tablet:text-[35px] text-black"
+          ref={titleRef}
+        >
           Voloriano
         </h1>
         <Button
