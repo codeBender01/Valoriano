@@ -76,7 +76,9 @@ const MemoriesMobile: FC = () => {
     <div className="demo-wrapper  flex flex-col gap-[20vh] mobile:gap-[40vh]">
       <header className="df aic jcc h-[100vh]">
         <div>
-          <h1 className="text-[30px] mobile:text-[80px]">Memories</h1>
+          <h1 className="text-[30px] mobile:text-[80px]">
+            Start Your Memories
+          </h1>
           <div className="flex flex-col items-center gap-[30px]">
             <div>Scroll down</div>
             <div className="avatar p-[15px]" onClick={handleScroll}>
@@ -127,7 +129,7 @@ const MemoriesMobile: FC = () => {
         </ul>
       </section>
 
-      <footer className="df aic jcc">
+      <footer className="df aic jcc flex flex-col gap-[15px]">
         <Button
           style={{
             borderRadius: "0",
@@ -135,11 +137,12 @@ const MemoriesMobile: FC = () => {
           id="account"
           className="bg-brown text-white h-[42px]  font-main font-medium text-[12px] w-[60%]"
           onClick={() => {
-            navigate("/home");
+            navigate("/configurator");
           }}
         >
-          Go to Home
+          Go to Customization
         </Button>
+        <p className="underline">Go to Homepage</p>
       </footer>
     </div>
   );

@@ -183,7 +183,9 @@ const Memories: FC = () => {
       <div className="demo-wrapper  flex flex-col gap-[20vh]">
         <header className="df aic jcc h-[100vh]">
           <div>
-            <h1 className="text-[30px] mobile:text-[80px]">Memories</h1>
+            <h1 className="text-[30px] mobile:text-[80px]">
+              Start Your Memories
+            </h1>
             <div className="flex flex-col items-center gap-[30px]">
               <div>Scroll down</div>
               <div
@@ -301,6 +303,7 @@ const Memories: FC = () => {
               }}
               id="account"
               className="bg-brown text-white h-[56px] w-[100%] font-main font-medium text-normal"
+              onClick={() => navigate("/configurator")}
             >
               Create your own
             </Button>
@@ -313,7 +316,7 @@ const Memories: FC = () => {
               className="bg-white text-brown !h-[56px] w-[100%] font-main font-medium text-normal border-brown"
               onClick={() => navigate("/home")}
             >
-              Go to homepage
+              Go to Homepage
             </Button>
           </div>
           {/* Fifth section end */}
