@@ -44,6 +44,7 @@ const Configurator: FC = () => {
     bandColor: "",
   });
   const [engraveText, setEngraveText] = useState("");
+  const [isLogin, setIsLogin] = useState(false);
 
   const options = {
     stone: "Choose stone",
@@ -67,7 +68,7 @@ const Configurator: FC = () => {
   useEffect(() => {
     const data: any = localStorage.getItem("user-token");
     const jsonData = JSON.parse(data);
-    jsonData == null && navigate("/sign-in");
+    jsonData == null && setIsLogin(true);
   }, []);
 
   return (
@@ -128,7 +129,6 @@ const Configurator: FC = () => {
             //       element.count++;
             //     }
             //   });
-
             localStorage.setItem(
               "product-info",
               JSON.stringify([
@@ -141,7 +141,12 @@ const Configurator: FC = () => {
                 },
               ])
             );
-            navigate("/cart");
+
+            if (isLogin) {
+              navigate("/cart");
+            } else {
+              navigate("/sign-in");
+            }
           }
           if (steps.stone) {
             setSteps({
@@ -417,8 +422,23 @@ const Configurator: FC = () => {
             setProgress(4);
           }
           if (steps.bandColor) {
-            localStorage.setItem("product-info", JSON.stringify(info));
-            navigate("/cart");
+            localStorage.setItem(
+              "product-info",
+              JSON.stringify([
+                ...products,
+                {
+                  id: Math.floor(Math.random() * (1000000 - 1 + 1)) + 1,
+                  name: "Love Brocelet №1",
+                  price: Math.floor(Math.random() * (200 - 50 + 1)) + 50,
+                  options: info,
+                },
+              ])
+            );
+            if (isLogin) {
+              navigate("/cart");
+            } else {
+              navigate("/sign-in");
+            }
           }
         }}
       >
