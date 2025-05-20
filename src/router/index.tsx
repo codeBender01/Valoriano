@@ -18,7 +18,7 @@ const Cart = lazy(() => import("../pages/Cart"));
 const SignUp = lazy(() => import("../pages/SignUp"));
 const Memories = lazy(() => import("../pages/memories/Page"));
 const VerifyAccount = lazy(() => import("../pages/Verify"));
-const MemoriesStartPage = lazy(() => import("../pages/MemoriesStartPage"));
+// const MemoriesStartPage = lazy(() => import("../pages/MemoriesStartPage"));
 const ForgotPassword = lazy(() => import("../pages/ForgotPassword"));
 const OrderedDetail = lazy(() => import("../pages/OrderedDetail"));
 
