@@ -183,7 +183,7 @@ const Memories: FC = () => {
       <div className="demo-wrapper  flex flex-col gap-[20vh]">
         <header className="df aic jcc h-[100vh]">
           <div>
-            <h1 className="text-[30px] mobile:text-[80px]">
+            <h1 className="text-[30px] mobile:text-[80px] text-center">
               Start Your Memories
             </h1>
             <div className="flex flex-col items-center gap-[30px]">

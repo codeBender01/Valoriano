@@ -144,16 +144,16 @@ export default function Router() {
           <Memories />
         </Suspense>
       ),
-      path: "/memories",
-    },
-    {
-      element: (
-        <Suspense fallback={<Loading />}>
-          <MemoriesStartPage />
-        </Suspense>
-      ),
       path: "/",
     },
+    // {
+    //   element: (
+    //     <Suspense fallback={<Loading />}>
+    //       <MemoriesStartPage />
+    //     </Suspense>
+    //   ),
+    //   path: "/",
+    // },
   ]);
 
   return routes;

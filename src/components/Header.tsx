@@ -132,7 +132,7 @@ const Header: FC = () => {
             </div>
           ) : (
             <div
-              className="flex gap-[15px]"
+              className="flex gap-[5px] sm:gap-[15px]"
               style={{
                 color: colors.textColor,
               }}
