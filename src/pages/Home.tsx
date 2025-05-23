@@ -1,25 +1,34 @@
 import { FC } from "react";
 
-import ring1 from "../assets/ring1.png";
-import ring2 from "../assets/ring2.png";
-import bracelet from "../assets/bracelet1.png";
+// import ourStory from "../assets/ring1.png";
+import ourStory from "../assets/ourStory.webp";
+// import ring2 from "../assets/ring2.png";
+import ring2 from "../assets/createYourOwn.webp";
+// import bracelet from "../assets/bracelet1.png";
+import bracelet from "../assets/makeEngraving.webp";
 import ring3 from "../assets/ring3.png";
 
 const Home: FC = () => {
   return (
     <>
       <div className="flex flex-col items-center w-[92%] max-w-[1440px] z-10 mx-auto gap-[10px] relative pt-[100px] lg:flex-row lg:items-start lg:gap-[50px]">
-        <div className="h-[250px] w-[90%] lg:w-[55%] md:w-[70%] lg:h-[480px]">
-          <img src={ring1} alt="" className="w-[100%] h-[100%] object-cover" />
+        <div className="h-[250px] w-[90%] lg:w-[55%] md:w-[70%] lg:h-full">
+          <img
+            src={ourStory}
+            alt=""
+            className="w-[100%] h-[100%] object-cover"
+          />
         </div>
         <div className="w-[100%] flex flex-col gap-6 mt-0 lg:mt-[90px] lg:w-[35%]">
           <h3 className="font-main font-medium text-lg leading-[48px] text-center">
             Our Story
           </h3>
           <p className="text-sm text-grayP leading-8 font-medium">
-            Lorem ipsum dolor sit amet consectetur. Sollicitudin morbi molestie
-            at amet praesent tortor. Maecenas non tempus at consequat ac est
-            varius. Tortor aliquet nulla consequat risus.
+            Every love story is unique, and the perfect piece of jewelry
+            captures its essence. We are inspired by timeless emotions and
+            unforgettable moments that connects people. Our collections are
+            crafted to symbolize connection, trust, and devotion. Celebrate your
+            bond with jewelry that speaks the language of love.
           </p>
         </div>
         <div className="lg:bottom-[-15%] lg:left-[45%]  md:lg:left-[60%] rounded-round flex items-center justify-center absolute translate-y-[-50%]  bottom-[-45%] md:bottom-[-50%] text-default text-center border-borderGray border-[1px] font-medium underline text-textGray w-[145px] h-[145px]">
@@ -91,7 +100,7 @@ const Home: FC = () => {
       </div>
 
       <div className="w-[92%] mx-auto mt-[50px] flex flex-col lg:flex-row items-center justify-between">
-        <div className="rotate-180 w-[90%] h-[380px] lg:w-[55%] md:h-[500px]">
+        <div className="rotate-0 w-[90%] h-[380px] lg:w-[55%] md:h-[500px]">
           <img
             src={bracelet}
             alt=""
@@ -103,9 +112,11 @@ const Home: FC = () => {
             Make engraving
           </h4>
           <p className="text-grayP text-sm font-medium leading-8 text-center lg:text-left">
-            Lorem ipsum dolor sit amet consectetur. Sollicitudin morbi molestie
-            at amet praesent tortor. Maecenas non tempus at consequat ac est
-            varius. Tortor aliquet nulla consequat risus.
+            Engraving names or meaningful text on jewelry adds a deeply personal
+            touch to every piece. It transforms a beautiful accessory into a
+            timeless symbol of love, memories, or commitment. Whether it's a
+            name, a special date, or a heartfelt message, your words will be
+            etched in elegance forever.
           </p>
           <button className="w-fit bg-buttonGray text-white py-4 px-11 border-[1px] border-transparent hover:bg-beige hover:text-buttonGray duration-200">
             Open cart
