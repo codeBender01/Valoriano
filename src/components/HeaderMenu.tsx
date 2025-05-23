@@ -119,7 +119,7 @@ const HeaderMenu: FC<HeaderMenuProps> = ({ open, setOpen }) => {
                 setOpen(false);
                 navigate(p.path);
               }}
-              className="flex justify-between items-center uppercase text-white font-semibold font-play text-md cursor-pointer hover:mx-[4px] hover:opacity-80 duration-200 py-[12px]"
+              className="flex justify-between items-center uppercase text-white font-semibold font-play text-md cursor-pointer hover:mx-[4px] hover:opacity-80 duration-200 py-[12px] w-full"
             >
               {p.name}
               {p.isArrow && <IoIosArrowForward />}
