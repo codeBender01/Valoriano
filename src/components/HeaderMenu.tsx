@@ -67,7 +67,7 @@ const HeaderMenu: FC<HeaderMenuProps> = ({ open, setOpen }) => {
 
   return (
     <div
-      className={`bg-brown px-[22px] py-8 md:px-[94px] md:py-[44px] fixed top-0 left-0 w-[100%] h-[100vh] md:absolute md:w-auto md:top-auto md:h-auto ${
+      className={`bg-brown px-[22px] py-8 md:pl-[80px] md:pr-[20px] md:py-[44px] fixed top-0 left-0 w-[100%] h-[100vh] md:absolute md:w-auto md:top-auto md:h-auto ${
         open
           ? "animate-fade-in opacity-100 visible"
           : "animate-fade-out opacity-0 invisible"
@@ -101,7 +101,7 @@ const HeaderMenu: FC<HeaderMenuProps> = ({ open, setOpen }) => {
                 setOpen(false);
                 navigate(p.path);
               }}
-              className="flex justify-between items-center uppercase text-white font-semibold font-play text-md2 cursor-pointer hover:mx-[4px] hover:opacity-80 duration-200 py-[12px]"
+              className="flex justify-between items-center uppercase text-white font-semibold font-play text-md2 cursor-pointer hover:mx-[4px] hover:opacity-80 duration-200 py-[12px] w-[100%]"
             >
               {p.name}
               <IoIosArrowForward />
